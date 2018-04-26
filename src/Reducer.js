@@ -14,5 +14,11 @@ const initialState = fromJS({
 });
 
 export function reducer(state = initialState, action) {
+	switch(action.type) {
+		case 'SQUARE_MOVED':
+			return state
+				.updateIn(['squares', action.id, 'x'], x => x+action.dx)
+				.updateIn(['squares', action.id, 'y'], y => y+action.dy);
+		}
 	return state;
 }
